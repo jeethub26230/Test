@@ -1,0 +1,19 @@
+import sqlite3
+
+conn = sqlite3.connect('test.db')
+
+c = conn.cursor()
+# c.execute("""CREATE TABLE  students (
+#     sl_no int(3),
+#     Name Text,
+#     Marks Text
+#     )""")
+
+c.execute("INSERT INTO students values(2,'Ramu',54321)")
+c.execute("mode COLUMN")
+c.execute("SELECT * FROM students")
+print(c.fetchall())
+conn.commit()
+c.close()
+
+import PyGame
