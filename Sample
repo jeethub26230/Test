@@ -1,0 +1,45 @@
+from tkinter import *
+from tkinter import messagebox
+
+Uname = []
+pwd = []
+
+box = Tk()
+
+fr1 = Frame(box)
+fr1.pack(side='top')
+
+fr2 = Frame(box)
+fr2.pack()
+
+lab1 = Label(fr1, text='UserName : ',bg= 'yellow')
+lab1.pack(side='left')
+
+ent1 = Entry(fr1, width=50)
+ent1.pack()
+
+# Password
+lab2 = Label(fr2, text='Password : ',bg='white')
+lab2.pack(side='left')
+
+ent2 = Entry(fr2, width=50,bg='yellow')
+ent2.pack()
+ent2.config(show='#')
+
+i = IntVar()
+cb = Checkbutton(box,text = 'I accept all terms..')
+cb.pack()
+
+def ButC():
+    a = ent1.get()
+    b = ent2.get()
+    ent1.delete(0, END)
+    ent2.delete(0, END)
+    Uname.append(a)
+    pwd.append(b)
+    var = messagebox.askretrycancel('Are you sure?',"I Accept")
+    # print(f"Usernames : {Uname}\nPasswords : {pwd}")
+    # print("Latest Name {0}\n Latest PWD : {1}\ncheckButton is {2}".format(Uname[-1],pwd[-1],cb.get()))
+    print(var)
+    p = Label(box,text = 'Hi Dinesh')
+    p.pack()
