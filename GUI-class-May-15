@@ -1,0 +1,168 @@
+from tkinter import *
+from tkinter.ttk import Combobox
+from tkinter import messagebox
+
+Uname = []
+pwd = []
+
+box = Tk()
+
+fr1 = Frame(box)
+fr1.pack(side='top')
+
+fr2 = Frame(box)
+fr2.pack()
+
+lab1 = Label(fr1, text='UserName : ',bg= 'yellow')
+lab1.pack(side='left')
+
+ent1 = Entry(fr1, width=50)
+ent1.pack()
+
+# Password
+lab2 = Label(fr2, text='Password : ',bg='white')
+lab2.pack(side='left')
+
+ent2 = Entry(fr2, width=50,bg='yellow')
+ent2.pack()
+ent2.config(show='#')
+
+i = StringVar()
+cb = Checkbutton(box,text = 'I accept all terms..',variable = i, onvalue = 'I Accept', offvalue = "I Reject..")
+cb.pack()
+
+def ButC():
+    print("Check Button :",i.get())
+    print("Radio Button :", j.get())
+    print("Combo Box :",combo.get())
+    # print('radio Button 2 :',k.get())
+    sel = lb.curselection()
+    var = list(map(lb.get,sel))
+    # print("List Box : ",var)
+    print('Slider is :',sd.get())
+    print("Spin Box :",sp.get())
+
+    # var = []
+    # for z in sel:
+    #     var.append(lb.get(z))
+
+#
+# lb = Listbox(box, selectmode = EXTENDED)
+# lb.insert(0,'Python')
+# lb.insert(1,'Java')
+# lb.insert(2,'C++')
+# lb.insert(3,'C')
+# lb.insert(5,'HTML')
+# lb.insert(4,'YAML')
+# lb.insert(6,'Python')
+# lb.pack()
+
+j = StringVar()
+
+mrb = Radiobutton(box,text = 'Male',value = 'Male',variable = j)
+mrb.pack()
+
+frb = Radiobutton(box,text = 'Female',value = 'Female',variable = j)
+frb.pack()
+#
+# k = StringVar()
+#
+# yrb = Radiobutton(box,text = 'Yes',variable = k, value = 'Yes')
+# yrb.pack()
+#
+# nrb = Radiobutton(box , text = 'No',variable = k, value = 'No')
+# nrb.pack()
+
+l = ['Apple','Mango','Papaya','Grapes','Orange']
+combo = Combobox(box,values= l)
+combo.set('Select Item')
+combo.pack()
+
+sd = Scale(box, from_ = 0, to_ =100)
+sd.pack()
+
+mm = Menu(box)
+box.config(menu = mm)
+
+vm = Menu(mm)
+mm.add_cascade(label = 'View',menu = vm)
+
+tm = Menu(vm)
+vm.add_cascade(label = 'Tool',menu = tm)
+
+def sdmb():
+    print('I am Screw Driver...')
+
+
+sdm = Menu(tm)
+tm.add_command(label = 'Screwdriver',command = sdmb)
+
+def cpmb():
+    print("I am Cutting Plier")
+
+cpm = Menu(tm)
+tm.add_command(label = 'Cutting Plier',command = cpmb)
+
+em = Menu(mm)
+mm.add_cascade(label = 'Edit',menu = em)
+
+def cmb():
+    print("Hi AM CUT Button...")
+
+cm = Menu(em)
+em.add_command(label = 'CUT',command = cmb)
+
+fm = Menu(em)
+em.add_cascade(label = 'Find', menu = fm)
+
+def rpmb():
+    print('I am Replace...')
+
+rpm = Menu(fm)
+fm.add_command(label = 'Replace',command = rpmb)
+
+fm = Menu(mm)
+mm.add_cascade(label = 'File',menu = fm)
+
+def nmb():
+    print("I am New Menu...")
+
+nm = Menu(fm)
+fm.add_command(label = 'New',command = nmb)
+
+om = Menu(fm)
+fm.add_cascade(label = 'Open',menu = om)
+def rmb():
+    print("Hi I am Recent Menu...")
+
+rm = Menu(om)
+om.add_command(label = 'Recent',command = rmb)
+
+sp = Spinbox(box,from_=0,to_=10)
+sp.pack()
+
+can = Canvas(box , height = 300,width = 300,bg = 'red')
+can.pack()
+
+
+
+# can.create_rectangle(0,0,200,100,fill = 'white')
+# can.create_oval(0,0,200,100,outline = 'yellow',fill = 'blue')
+# # can.create_arc(0,0,100,100,extent = 180,fill = 'yellow')
+# # can.create_line(0,0,100,100,fill = 'blue')
+
+can.create_oval(200,100,300,200,outline = 'yellow',fill = 'blue')
+
+
+
+but = Button(box, text='Submit', command=ButC,bg = 'red' , fg = 'white')
+but.pack()
+# box.resizable(0,0)
+
+box.mainloop()
+
+
+
+####################################################################################################################
+
+Thank you,
