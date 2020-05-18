@@ -1,0 +1,27 @@
+#!/bin/python
+# Client
+import socket
+
+# IPV4  - socket.AF_INET
+# TCP - socket.SOCK_STREAM
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+HOST = input("Enter the IP :- ")
+port = 9999
+s.connect((HOST, port))
+print("Cossection Established...")
+var = True
+while var:
+    smsg = input("Me : ")
+    if(smsg == 'bye'):
+        smsg = smsg.encode('utf-8')
+        s.send(smsg)
+        var = False
+    elif(len(smsg)>0):
+        smsg = smsg.encode('utf-8')
+        s.send(smsg)
+    else:
+        var = False
+    
+    rmsg = s.recv(1024)
+    rmsg = rmsg.decode('utf-8')
+    print(HOST, ": ",rmsg)
